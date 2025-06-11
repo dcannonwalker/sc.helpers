@@ -1,11 +1,13 @@
 #' Generate pseudodata from single cell counts
 #' @param y A matrix or `DGEList` object
+#' @export
 generate_sc_pseudodata <- function(y, ...) {
     UseMethod("generate_sc_pseudodata")
 }
 
 #' Generate pseudodata from single cell counts stored in a `DGEList`
 #' @param y A `DGEList` object
+#' @export
 generate_sc_pseudodata.DGEList <- function(y, prior.df=10,
                                            niter = 4,
                                            tol=1e-06, verbose=FALSE, ...) {
