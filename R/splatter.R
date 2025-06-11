@@ -17,6 +17,7 @@ get_groups <- function(y, ...) {
 
 #' Get group labels from a `SingleCellExperiment`
 #' @param y A `SingleCellExperiment`
+#' @export
 get_groups.SingleCellExperiment <- function(y) {
     x <- colData(y)
     sg <- paste0(x[["Sample"]], x[["Group"]])
