@@ -71,12 +71,17 @@ generate_sc_pseudodata.default <- function(y, group=NULL, lib.size=NULL,
         dispersion <- disp.out
     }
 
-    list(
+    out <- list(
         tagwise.dispersion = disp.out,
         pseudodata = equalizeLibSizes(y, group=group,
                                       dispersion=disp.out,
                                       lib.size=lib.size)
     )
+
+    y[["pseudodata"]] <- out[["pseudodata"]]
+    y[["tagwise.dispersion"]] <- out[["tagwise.dispersion"]]
+    out[["y"]] <- y
+    out
 }
 
 do_iter <- function(y, group, dispersion, lib.size,
