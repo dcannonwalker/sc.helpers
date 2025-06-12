@@ -24,6 +24,6 @@ create_pb_dispersion <- function(y) {
 #' @inheritParams create_pb_dispersion
 #' @export
 get_pb_nf <- function(y) {
-    ncells <- table(y$samples$group)
+    ncells <- tabulate(y$samples$group)
     ncells / median(ncells)
 }

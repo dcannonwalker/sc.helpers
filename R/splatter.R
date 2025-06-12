@@ -9,9 +9,9 @@ get_conditions <- function(sim) {
 }
 
 #' Get the design variables for pseudobulk samples
-#' @param sim A `splatter` pop sim
+#' @inheritParams get_conditions
 #' @export
-get_pseudobulk_variables <- function(sim) {
+get_pb_variables <- function(sim) {
     x <- colData(sim)
     x <- data.frame(Sample = x$Sample,
                      Group = x$Group,
@@ -21,7 +21,7 @@ get_pseudobulk_variables <- function(sim) {
     reshape(x, direction = "long",
             idvar = "sample",
             varying = list(2:3), times = c("Group1", "Group2"),
-            v.names = "condition", timevar = "group")
+            v.names = "condition", timevar = "cluster")
 }
 
 #' Get group labels
@@ -38,3 +38,4 @@ get_groups.SingleCellExperiment <- function(y) {
     x <- colData(y)
     factor(paste0(x[["Sample"]], ":", x[["Group"]]))
 }
+
