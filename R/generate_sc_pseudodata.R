@@ -78,9 +78,9 @@ generate_sc_pseudodata.default <- function(y, group=NULL, lib.size=NULL,
                                       lib.size=lib.size)
     )
 
-    y[["pseudodata"]] <- out[["pseudodata"]]
-    y[["tagwise.dispersion"]] <- out[["tagwise.dispersion"]]
-    out[["y"]] <- y
+    # y[["pseudodata"]] <- out[["pseudodata"]]
+    # y[["tagwise.dispersion"]] <- out[["tagwise.dispersion"]]
+    # out[["y"]] <- y
     out
 }
 
