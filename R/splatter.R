@@ -8,6 +8,22 @@ get_conditions <- function(sim) {
            function(s) unique(s$condition))
 }
 
+#' Get the design variables for pseudobulk samples
+#' @param sim A `splatter` pop sim
+#' @export
+get_pseudobulk_variables <- function(sim) {
+    x <- colData(sim)
+    x <- data.frame(Sample = x$Sample,
+                     Group = x$Group,
+                     Condition = x$Condition)
+    x <- tapply(x, ~Sample + Group, function(grp) unique(grp$Condition))
+    x <- data.frame(sample = rownames(x), x)
+    reshape(x, direction = "long",
+            idvar = "sample",
+            varying = list(2:3), times = c("Group1", "Group2"),
+            v.names = "condition", timevar = "group")
+}
+
 #' Get group labels
 #' @param y A `SingleCellExperiment` or `Seurat` object
 #' @export
@@ -20,6 +36,5 @@ get_groups <- function(y, ...) {
 #' @export
 get_groups.SingleCellExperiment <- function(y) {
     x <- colData(y)
-    sg <- paste0(x[["Sample"]], x[["Group"]])
-    factor(sg, labels = seq(1, length(unique(sg))))
+    factor(paste0(x[["Sample"]], ":", x[["Group"]]))
 }
