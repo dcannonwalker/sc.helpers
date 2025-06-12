@@ -2,8 +2,10 @@
 
 S3method(generate_sc_pseudodata,DGEList)
 S3method(get_groups,SingleCellExperiment)
-export(create_pseudobulk_samples)
+export(create_pb_dispersion)
+export(create_pb_samples)
 export(generate_sc_pseudodata)
 export(get_conditions)
 export(get_groups)
+export(get_pb_nf)
 export(get_pseudobulk_variables)
