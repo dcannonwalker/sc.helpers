@@ -4,10 +4,12 @@
 \alias{create_pb_samples}
 \title{Aggregate single cell counts to create pseudobulk samples}
 \usage{
-create_pb_samples(y)
+create_pb_samples(y, type = c("raw", "pd"))
 }
 \arguments{
 \item{y}{A \code{DGEList} object of single cell counts with pseudodata attached}
+
+\item{type}{Use raw or pseudodata counts?}
 }
 \description{
 Aggregate single cell counts to create pseudobulk samples

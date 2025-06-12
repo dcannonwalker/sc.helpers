@@ -36,4 +36,5 @@ compare_coef <- function(sim, fit, coef.name, plot = TRUE) {
                    ylab = paste0("Estimated ", coef.name))
     out <- cbind(est, act)
     colnames(out) <- paste0(coef.name, c(".est", ".act"))
+    out
 }
